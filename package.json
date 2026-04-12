@@ -11,10 +11,11 @@
         "dist/main"
     ],
     "scripts": {
-        "clean": "rimraf ./dist ./**/codegen",
+        "clean": "node scripts/clean.js",
         "clean:all": "npm run clean && rimraf ./node_modules package-lock.json",
         "codegen": "node ./dist/main/bin/index.js --target apache --sourceDir ./src/tests/integration/thrift --outDir ./src/tests/integration/apache/codegen",
-        "prebuild": "npm run clean && npm run lint && npm run format",
+        "prebuild": "npm run clean",
+        "prebuild-old": "npm run clean && npm run lint && npm run format",
         "build": "npm run build:only",
         "build:only": "tsc",
         "prebuild:test": "npm run build && npm run codegen",
@@ -46,24 +47,22 @@
         "@creditkarma/thrift-parser": "^1.2.0",
         "@types/fs-extra": "^7.0.0",
         "fs-extra": "^8.0.1",
-        "glob": "^7.1.2",
-        "typescript": "3.5.x"
+        "glob": "8.0.2",
+        "typescript": "3.5.x",
+        "minimatch": "^5.1.9"
     },
     "devDependencies": {
         "@types/chai": "^4.1.5",
-        "@types/glob": "^7.1.0",
-        "@types/mocha": "^5.2.5",
+        "@types/glob": "^8.0.0",
+        "@types/mocha": "^10.0.10",
         "@types/node": "^8.0.32",
-        "@types/rimraf": "^2.0.2",
+        "@types/rimraf": "^3.0.2",
         "@types/thrift": "^0.10.7",
         "chai": "^4.2.0",
-        "mocha": "^5.2.0",
+        "mocha": "^10.2.4",
         "prettier": "^1.17.0",
-        "rimraf": "^2.6.2",
+        "rimraf": "^3.0.2",
         "source-map-support": "^0.5.9",
-        "thrift": "^0.11.0",
-        "tslint": "^5.11.0",
-        "tslint-config-prettier": "^1.17.0",
-        "tslint-plugin-prettier": "^2.0.0"
+        "thrift": "^0.11.0"
     }
 }
